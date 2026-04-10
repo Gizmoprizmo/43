@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Единое приложение по производственным файлам</h1>
+<p class="muted">MVP для объединения изделий, техкарт, портфеля заказов, плана, факта, труда и складов в одной базе.</p>
+<div class="cards">
+  {% for key, value in counts.items() %}
+  <div class="card">
+    <div class="muted">{{ key }}</div>
+    <div style="font-size:30px;font-weight:bold">{{ value }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 style="margin-top:28px">Последние импорты</h2>
+<table>
+  <tr><th>Файл</th><th>Лист</th><th>Строк</th><th>Статус</th><th>Когда</th><th>Примечание</th></tr>
+  {% for row in latest %}
+  <tr>
+    <td>{{ row["source_file"] }}</td>
+    <td>{{ row["source_sheet"] }}</td>
+    <td>{{ row["row_count"] }}</td>
+    <td>{{ row["status"] }}</td>
+    <td>{{ row["imported_at"] }}</td>
+    <td>{{ row["note"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

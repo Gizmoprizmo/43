@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or "Unified MFG App" }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Arial, sans-serif;margin:0;background:#f6f7fb;color:#222}
+    header{background:#1f3a5f;color:#fff;padding:14px 20px}
+    nav a{color:#fff;margin-right:14px;text-decoration:none;font-weight:bold}
+    main{padding:20px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    table{width:100%;border-collapse:collapse;background:#fff}
+    th,td{border:1px solid #ddd;padding:8px;font-size:14px;vertical-align:top}
+    th{background:#eef2f7;position:sticky;top:0}
+    .flash{padding:10px 12px;border-radius:8px;margin-bottom:12px}
+    .success{background:#e7f7eb}
+    .danger{background:#fdeaea}
+    .search{margin-bottom:12px}
+    .search input{padding:8px;width:320px;max-width:100%}
+    .btn{padding:8px 12px;border-radius:8px;border:none;background:#1f3a5f;color:#fff;cursor:pointer}
+    .muted{color:#666}
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="{{ url_for('index') }}">Главная</a>
+    <a href="{{ url_for('import_data') }}">Импорт</a>
+    <a href="{{ url_for('products') }}">Изделия</a>
+    <a href="{{ url_for('techcards') }}">Техкарты</a>
+    <a href="{{ url_for('portfolio') }}">Портфель</a>
+    <a href="{{ url_for('plans') }}">План</a>
+    <a href="{{ url_for('labor') }}">Факт/Труд</a>
+    <a href="{{ url_for('warehouse') }}">Склады</a>
+  </nav>
+</header>
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

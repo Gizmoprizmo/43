@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Импорт Excel-файлов</h1>
+<p>Укажи папку, где лежат файлы:</p>
+<ul>
+  <li>ДанныеПроизводства.xlsm</li>
+  <li>ПОРТФЕЛЬ ЗАКАЗОВ 3.2.xlsm</li>
+  <li>Планирование производства ПМЗv4.4.xlsm</li>
+  <li>факт_труд.xlsx</li>
+  <li>факт_31032026.XLS</li>
+  <li>склады.XLS</li>
+</ul>
+<form method="post">
+  <input name="source_dir" style="width:520px;max-width:100%;padding:8px" placeholder="C:\Папка\С_файлами">
+  <button class="btn" type="submit">Запустить импорт</button>
+</form>
+<p class="muted" style="margin-top:16px">База: {{ db_path }}</p>
+{% endblock %}

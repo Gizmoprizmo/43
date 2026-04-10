@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<form class="search" method="get">
+  <input name="q" value="{{ q }}" placeholder="Поиск">
+  <button class="btn" type="submit">Найти</button>
+</form>
+{% if rows %}
+<table>
+  <tr>
+    {% for key in rows[0].keys() %}
+      <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+  {% for row in rows %}
+  <tr>
+    {% for key in row.keys() %}
+      <td>{{ row[key] }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="muted">Нет данных.</p>
+{% endif %}
+{% endblock %}

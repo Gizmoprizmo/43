@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Импорт завершён</h1>
+<p>Папка: <b>{{ source_dir }}</b></p>
+<table>
+  <tr><th>Таблица</th><th>Строк</th></tr>
+  {% for name, count in report %}
+  <tr><td>{{ name }}</td><td>{{ count }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
